@@ -1,0 +1,43 @@
+[
+    { 
+      "nombre": "ConcesionarioPaco", 
+      "direccion": "Calle Panal", 
+      "listaCoches": [
+        { "modelo": "FRV", "potencia": "200CV", "precio": "30000" },
+        { "modelo": "T-Cross", "potencia": "150CV", "precio": "27000" }
+      ]
+    },
+    { 
+      "nombre": "ConcesionarioJuan", 
+      "direccion": "Avenida Libertad", 
+      "listaCoches": [
+        { "modelo": "T-Roc", "potencia": "220CV", "precio": "33000" },
+        { "modelo": "Qasqai", "potencia": "190CV", "precio": "40000" }
+      ]
+    },
+    { 
+      "nombre": "ConcesionarioMaria", 
+      "direccion": "Calle Sol", 
+      "listaCoches": [
+        { "modelo": "Golf", "potencia": "180CV", "precio": "25000" },
+        { "modelo": "A3", "potencia": "200CV", "precio": "28000" }
+      ]
+    },
+    { 
+      "nombre": "ConcesionarioLuis", 
+      "direccion": "Avenida Mar", 
+      "listaCoches": [
+        { "modelo": "Civic", "potencia": "170CV", "precio": "26000" },
+        { "modelo": "Corolla", "potencia": "160CV", "precio": "24000" }
+      ]
+    },
+    { 
+      "nombre": "ConcesionarioAna", 
+      "direccion": "Calle Luna", 
+      "listaCoches": [
+        { "modelo": "Focus", "potencia": "150CV", "precio": "22000" },
+        { "modelo": "Megane", "potencia": "140CV", "precio": "21000" }
+      ]
+    }
+  ]
+  
