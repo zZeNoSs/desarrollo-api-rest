@@ -2,6 +2,10 @@
 const express = require("express");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const helmet = require("helmet");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+
+
     // Inicializamos la aplicación
 const app = express();
 
@@ -11,6 +15,7 @@ const uri = "mongodb+srv://frodrui1708:I0qmNaRcksL4Qh8h@cluster0.alcge.mongodb.n
     // Indicamos que la aplicación puede recibir JSON (API Rest)
 app.use(express.json());
 app.use(helmet());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     // Indicamos el puerto en el que vamos a desplegar la aplicación
     // eslint-disable-next-line no-undef

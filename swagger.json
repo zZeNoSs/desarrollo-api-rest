@@ -1,0 +1,347 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de Concesionarios",
+      "version": "1.0.0",
+      "description": "Documentación de la API para gestionar concesionarios y coches."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8080",
+        "description": "API Rest concesionarios con swagger"
+      }
+    ],
+    "paths": {
+      "/concesionarios": {
+        "get": {
+          "summary": "Obtiene todos los concesionarios",
+          "description": "Devuelve una lista de todos los concesionarios.",
+          "responses": {
+            "200": {
+              "description": "Lista de concesionarios obtenida exitosamente.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Concesionario"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Añade un nuevo concesionario",
+          "description": "Crea un nuevo concesionario en la base de datos.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Concesionario"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Concesionario añadido correctamente."
+            }
+          }
+        }
+      },
+      "/concesionarios/{id}": {
+        "get": {
+          "summary": "Obtiene un concesionario por ID",
+          "description": "Devuelve un concesionario especificado por su ID.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Concesionario obtenido correctamente.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Concesionario"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Actualiza un concesionario por ID",
+          "description": "Actualiza los datos de un concesionario especificado por su ID.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Concesionario"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Concesionario actualizado correctamente."
+            }
+          }
+        },
+        "delete": {
+          "summary": "Elimina un concesionario por ID",
+          "description": "Elimina un concesionario especificado por su ID de la base de datos.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Concesionario eliminado correctamente."
+            }
+          }
+        }
+      },
+      "/concesionarios/{id}/coches": {
+        "get": {
+          "summary": "Obtiene todos los coches de un concesionario",
+          "description": "Devuelve una lista de coches de un concesionario especificado por su ID.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de coches obtenida correctamente.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Coche"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Añade un coche a un concesionario",
+          "description": "Agrega un nuevo coche a un concesionario especificado por su ID.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coche"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Coche añadido correctamente."
+            }
+          }
+        }
+      },
+      "/concesionarios/{id}/coches/{index}": {
+        "get": {
+          "summary": "Obtiene un coche por índice",
+          "description": "Devuelve los detalles de un coche específico dentro de un concesionario utilizando su índice.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "in": "path",
+              "name": "index",
+              "required": true,
+              "description": "Índice del coche dentro del concesionario",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Detalles del coche obtenidos correctamente.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Coche"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Actualiza un coche por índice",
+          "description": "Actualiza los datos de un coche específico dentro de un concesionario utilizando su índice.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "in": "path",
+              "name": "index",
+              "required": true,
+              "description": "Índice del coche dentro del concesionario",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coche"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Coche actualizado correctamente."
+            }
+          }
+        },
+        "delete": {
+          "summary": "Elimina un coche por índice",
+          "description": "Elimina un coche específico dentro de un concesionario utilizando su índice.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "required": true,
+              "description": "ID del concesionario",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "in": "path",
+              "name": "index",
+              "required": true,
+              "description": "Índice del coche dentro del concesionario",
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Coche eliminado correctamente."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Concesionario": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "ID único del concesionario."
+            },
+            "nombre": {
+              "type": "string",
+              "description": "Nombre del concesionario."
+            },
+            "direccion": {
+              "type": "string",
+              "description": "Dirección del concesionario."
+            },
+            "coches": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Coche"
+              }
+            }
+          }
+        },
+        "Coche": {
+          "type": "object",
+          "properties": {
+            "modelo": {
+              "type": "string",
+              "description": "Modelo del coche."
+            },
+            "potencia": {
+              "type": "string",
+              "description": "Potencia del coche."
+            },
+            "precio": {
+              "type": "number",
+              "description": "Precio del coche."
+            }
+          }
+        }
+      }
+    }
+}
